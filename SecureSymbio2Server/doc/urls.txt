@@ -1,0 +1,5 @@
+https://github.com/bharat0126/springboot-sqlite-app
+http://code-flow-hjbello.blogspot.com.es/2017/07/using-sqlite-with-jdbc.html
+https://springframework.guru/spring-boot-web-application-part-3-spring-data-jpa/
+https://github.com/restart1025/Spring-Boot-SQLite/tree/master/src/main
+https://stackoverflow.com/questions/42890375/spring-boot-configure-sqlite-database/42905144#42905144
