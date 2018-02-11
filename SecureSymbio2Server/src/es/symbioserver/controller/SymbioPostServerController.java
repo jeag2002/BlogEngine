@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,8 @@ public class SymbioPostServerController {
 	
 	private final Logger logger = LoggerFactory.getLogger(SymbioPostServerController.class);
 	
+	//https://www.mkyong.com/spring-security/get-current-logged-in-username-in-spring-security/
+	
 	/**
 	 * Create a post
 	 */
@@ -40,6 +44,12 @@ public class SymbioPostServerController {
 			@RequestBody PostsBean pBean){
 		String response = "";
 		logger.info("[SymbioPostServerControler] -- insertPost POST");
+		
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName(); 
+		
+	    logger.info("[SymbioPostServerControler] -- user["+name+"] insertPost POST");
+	    
 		response = postService.insertPost(pBean);
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
@@ -56,8 +66,12 @@ public class SymbioPostServerController {
 			@PathVariable("userid") int userid,
 			@PathVariable("id") int id, 
 			@RequestBody PostsBean pBean){
-		logger.info("[SymbioPostServerControler] -- updatePost/[" + userid + "]/[" + id + "] PUT");
-		String response = postService.updatePost(userid, id, pBean);
+		
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName(); 
+		
+		logger.info("[SymbioPostServerControler] -- user[" +name + "] updatePost/[" + userid + "]/[" + id + "] PUT");
+		String response = postService.updatePost(userid, name, id, pBean);
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
 	
@@ -70,8 +84,12 @@ public class SymbioPostServerController {
 	@RequestMapping(value = "/deletePost/{userid}/{id}", method = RequestMethod.DELETE)
 	public void deletePost(@org.springframework.web.bind.annotation.PathVariable("userid") int userid,
 			@org.springframework.web.bind.annotation.PathVariable("id") int id){
-		logger.info("[SymbioPostServerControler] -- deletePost/["+userid+"]/["+id+"] DELETE");
-		postService.deletePost(userid, id);		
+		
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName(); 
+	    
+		logger.info("[SymbioPostServerControler] -- user["+name +"] deletePost/["+userid+"]/["+id+"] DELETE");
+		postService.deletePost(userid,name, id);		
 	}
 	
 	
@@ -100,9 +118,13 @@ public class SymbioPostServerController {
 	
 	public HttpEntity<List<PostsBean>> getPostByUID( 
 			@org.springframework.web.bind.annotation.PathVariable("uid") int uid){	
-		logger.info("[SymbioPostServerControler] -- getPostByUID/["+uid+"] GET");
+		
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName(); 
+		
+		logger.info("[SymbioPostServerControler] -- user["+name+"] getPostByUID/["+uid+"] GET");
 		List<PostsBean> data = new ArrayList<PostsBean>();
-		data = postService.getPostByUID(uid);
+		data = postService.getPostByUID(uid,name);
 		return new ResponseEntity<List<PostsBean>>(data, HttpStatus.OK);
 	}
 	

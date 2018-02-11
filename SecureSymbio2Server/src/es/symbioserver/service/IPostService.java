@@ -15,7 +15,7 @@ public interface IPostService {
 	/**
 	 * Get a post By UID
 	 */
-	public List<PostsBean> getPostByUID(int uid);
+	public List<PostsBean> getPostByUID(int uid, String username);
 	
 	
 	/**
@@ -27,13 +27,13 @@ public interface IPostService {
 	/**
 	 * Delete a post By ID & User
 	 */
-	public void deletePost(int userid, int id);
+	public void deletePost(int userid, String username, int id);
 	
 	
 	/**
 	 * Update a post By ID & User
 	 */
-	public String updatePost(int userid, int id, PostsBean pBean);
+	public String updatePost(int userid, String username, int id, PostsBean pBean);
 	
 	
 	/**

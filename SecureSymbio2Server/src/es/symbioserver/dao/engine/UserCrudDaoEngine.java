@@ -142,6 +142,53 @@ public class UserCrudDaoEngine implements IUserCrudDaoEngine {
 		}
 	}
 	
+	
+	
+	/**
+	 * Get User By Name 
+	 * @param UID
+	 */
+	public UserBean getUserByName(String name) {
+		
+		UserBean uBean = new UserBean();
+		
+		
+		try{
+		
+			Connection connection = dataSource.getConnection();
+			Statement statement = connection.createStatement();
+			
+			String query = "select u.id, u.name, u.role, u.email, u.password from user u where u.name = '" + name + "'";
+			logger.info("[UserCrudDaoEngine-getUserByName] query (" + query + ")");
+			
+			ResultSet rs = statement.executeQuery(query);
+			
+			boolean isData = rs.next();
+			
+			if (isData){
+				uBean = new UserBean();
+				uBean.setId(rs.getInt("id"));
+				uBean.setName(rs.getString("name"));
+				uBean.setRole(rs.getString("role"));
+				uBean.setEmail(rs.getString("email"));
+				uBean.setPassword(rs.getString("password"));
+			}else{
+				logger.warn("[UserCrudDaoEngine-getUserByName] resultset empty");
+			}
+	
+			statement.close();
+			connection.close();	
+		}catch(Exception e){
+			logger.warn("[UserCrudDaoEngine-getUserByName] error (" + e.getMessage() + ")");
+			uBean = new UserBean();
+		}finally{
+			return uBean;
+		}
+	}
+	
+	
+	
+	
 	/**
 	 * Evaluates if exist user. If yes returns UID; if not returns -1
 	 * @param uBean

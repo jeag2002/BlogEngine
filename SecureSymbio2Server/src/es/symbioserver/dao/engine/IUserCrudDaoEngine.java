@@ -12,4 +12,6 @@ public interface IUserCrudDaoEngine {
 	//Get User By UID
 	public UserBean getUserByUID(int UID);
 	
+	//Get User By name
+	public UserBean getUserByName(String name);
 }

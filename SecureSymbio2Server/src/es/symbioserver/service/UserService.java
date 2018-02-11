@@ -15,6 +15,7 @@ public class UserService implements IUserService {
 	private static final int LENGTH_NAME = 50;
 	private static final int LENGTH_MAIL = 50;
 	private static final int LENGTH_PASS = 50;
+	private static final int LENGTH_ROLE = 50;
 	
 	@Override
 	/**
@@ -32,6 +33,8 @@ public class UserService implements IUserService {
 		if (uBean.getPassword()==null){uBean.setPassword("");}
 		else if (uBean.getPassword().trim().length() > LENGTH_PASS){uBean.setPassword(uBean.getPassword().substring(0, LENGTH_PASS));}
 		
+		if (uBean.getRole()==null){uBean.setRole("");}
+		else if (uBean.getRole().trim().length() > LENGTH_ROLE){uBean.setRole(uBean.getRole().substring(0, LENGTH_ROLE));}
 		
 		return uCDaoEngine.createUser(uBean);
 	}
@@ -52,6 +55,9 @@ public class UserService implements IUserService {
 		
 		if (uBean.getPassword()==null){uBean.setPassword("");}
 		else if (uBean.getPassword().trim().length() > LENGTH_PASS){uBean.setPassword(uBean.getPassword().substring(0, LENGTH_PASS));}
+		
+		if (uBean.getRole()==null){uBean.setRole("");}
+		else if (uBean.getRole().trim().length() > LENGTH_ROLE){uBean.setRole(uBean.getRole().substring(0, LENGTH_ROLE));}
 		
 		return uCDaoEngine.modifyUser(UID, uBean);
 	}
