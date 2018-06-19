@@ -4,6 +4,7 @@ es\symbioserver\sqlite\SQLiteDialect.class
 es\symbioserver\sqlite\DBConfig.class
 es\symbioserver\service\IUserService.class
 es\symbioserver\sqlite\DBInitializeConfig.class
+es\symbioserver\beans\ErrorDetails.class
 es\symbioserver\controller\SymbioUserServerController.class
 es\symbioserver\dao\engine\IPostsCrudDaoEngine.class
 es\symbioserver\service\IPostService.class
@@ -11,6 +12,7 @@ es\symbioserver\beans\UserBean.class
 es\symbioserver\service\UserService.class
 es\symbioserver\Application.class
 es\symbioserver\security\BasicAuthenticationPoint.class
+es\symbioserver\controller\CustomizedResponseEntityExceptionHandler.class
 es\symbioserver\controller\SymbioPostServerController.class
 es\symbioserver\dao\crud\IPostsCrudDao.class
 es\symbioserver\security\ApplicationConfig.class

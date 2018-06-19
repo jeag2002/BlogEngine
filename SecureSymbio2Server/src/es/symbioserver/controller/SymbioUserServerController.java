@@ -1,5 +1,7 @@
 package es.symbioserver.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.symbioserver.beans.UserBean;
 import es.symbioserver.service.IUserService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/userService")
@@ -31,8 +34,9 @@ public class SymbioUserServerController {
 	 */
 	
 	@RequestMapping(value = "/insertUser", method = RequestMethod.POST,  produces = "text/html")
-	public HttpEntity<String> insertPost(
-			@RequestBody UserBean uBean){
+	@ApiOperation(value="insertUser",nickname="insertUser")
+	public HttpEntity<String> insertUser(
+			@Valid @RequestBody UserBean uBean){
 		String response = "";
 		logger.info("[SymbioUserServerControler] -- insertUser POST");
 		response = service.createUser(uBean);
@@ -47,9 +51,10 @@ public class SymbioUserServerController {
 	 */
 	
 	@RequestMapping(value = "/modifyUser/{UID}", method = RequestMethod.PUT,  produces = "text/html")
-	public HttpEntity<String>  updatePost(
+	@ApiOperation(value="modifyUser",nickname="modifyUser")
+	public HttpEntity<String>  modifyUser(
 			@PathVariable("UID") int userid,
-			@RequestBody UserBean uBean){
+			@Valid @RequestBody UserBean uBean){
 		logger.info("[SymbioUserServerControler] -- updateUser/[" + userid + "] PUT");
 		String response = service.modifyUser(userid, uBean);
 		return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -61,6 +66,7 @@ public class SymbioUserServerController {
 	 * @return uBean data of user of ID or empty object. 
 	 */
 	@RequestMapping(value = "/getUserByUID/{UID}", method = RequestMethod.GET)
+	@ApiOperation(value="getUserByUID",nickname="getUserByUID")
 	public HttpEntity<UserBean>  getUserByUID(
 			@PathVariable("UID") int UID){
 		logger.info("[SymbioUserServerControler] -- getUserByUID/[" + UID + "] GET");

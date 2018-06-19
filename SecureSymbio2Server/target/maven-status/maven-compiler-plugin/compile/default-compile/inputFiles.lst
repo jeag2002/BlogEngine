@@ -1,3 +1,4 @@
+C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\controller\CustomizedResponseEntityExceptionHandler.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\sqlite\SQLiteDialect.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\security\BasicAuthenticationPoint.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\dao\crud\IPostsCrudDao.java
@@ -16,4 +17,5 @@ C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\da
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\Application.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\service\IUserService.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\controller\SymbioUserServerController.java
+C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\beans\ErrorDetails.java
 C:\workspaces\workEclipse\workSymbio2\SecureSymbio2Server\src\es\symbioserver\service\UserService.java

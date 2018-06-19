@@ -20,6 +20,8 @@ import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +43,7 @@ public class SymbioPostServerController {
 	@ApiOperation(value="insertPost",nickname="insertPost")
 	@RequestMapping(value = "/insertPost", method = RequestMethod.POST,  produces = "text/html")
 	public HttpEntity<String> insertPost(
-			@RequestBody PostsBean pBean){
+			@Valid @RequestBody PostsBean pBean){
 		String response = "";
 		logger.info("[SymbioPostServerControler] -- insertPost POST");
 		
@@ -65,7 +67,7 @@ public class SymbioPostServerController {
 	public HttpEntity<String>  updatePost(
 			@PathVariable("userid") int userid,
 			@PathVariable("id") int id, 
-			@RequestBody PostsBean pBean){
+			@Valid @RequestBody PostsBean pBean){
 		
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String name = auth.getName(); 

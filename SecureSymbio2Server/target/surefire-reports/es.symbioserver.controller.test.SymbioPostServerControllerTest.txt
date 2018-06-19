@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: es.symbioserver.controller.test.SymbioPostServerControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.914 sec - in es.symbioserver.controller.test.SymbioPostServerControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.622 sec - in es.symbioserver.controller.test.SymbioPostServerControllerTest

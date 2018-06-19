@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name = "User")
@@ -14,9 +19,22 @@ public class UserBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@NotNull(message = "Name cannot be null")
+	@Size (min=2, max=50, message="Name 50 characters")
 	private String name;
+	
+	@NotNull(message = "Password cannot be null")
+	@Size (min=2, max=50, message="Password 50 characters")
 	private String password;
+	
+	@NotNull(message = "Email cannot be null")
+	@Size (min=2, max=50, message="Email 50 characters")
+	@Email(message="Email format is wrong")
 	private String email;
+	
+	@NotNull(message = "Role cannot be null")
+	@Size (min=2, max=50, message="Role 50 characters")
 	private String role;
 	
 	
